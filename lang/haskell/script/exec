@@ -1,0 +1,7 @@
+#!/usr/bin/env runghc
+
+import System.Process
+import System.Directory
+
+main = do
+    createProcess (proc "ls" ["-a", "-l", "-h"])
