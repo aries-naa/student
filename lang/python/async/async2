@@ -1,0 +1,30 @@
+#!/bin/env python3
+import time
+import asyncio
+import concurrent
+
+
+def bl_fun(number):
+    time.sleep(number)
+
+
+async def aw_fun(name, number):
+    print(f"start: {name}")
+
+    loop = asyncio.get_running_loop()
+    th_pool = concurrent.futures.ThreadPoolExecutor()
+    await loop.run_in_executor(th_pool, bl_fun, number)
+
+    print(f"finish: {name}")
+
+
+async def main():
+    await asyncio.gather(
+        aw_fun("A", 7),
+        aw_fun("B", 1),
+        aw_fun("C", 2),
+        aw_fun("D", 1),
+    )
+
+
+asyncio.run(main(), debug=True)

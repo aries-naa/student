@@ -1,0 +1,12 @@
+#!/bin/env python3
+import types
+import asyncio
+
+async def atest(suffix, timeout):
+    print("start:" + suffix)
+    sleep_result = asyncio.sleep(timeout)
+    await sleep_result
+    print("finish:" + suffix)
+
+
+print(asyncio.gather(atest("data", 3), atest("transaction", 1)))

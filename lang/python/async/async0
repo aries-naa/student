@@ -1,0 +1,42 @@
+#!/bin/env python3
+
+class ivogon:
+
+    def __init__(self, start):
+        self.x = start
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        result = self.x
+        self.x = self.x + 17
+        return result
+
+
+def vogon(start):
+
+    x = start
+    while True:
+        yield x
+        x = x + 1
+
+
+x1 = vogon(15)
+xxx = filter(lambda x: True if x % 3 == 0 else False, map(lambda x: x * 100, x1))
+print(xxx)
+
+x2 = ivogon(44)
+yyy = filter(lambda x: True if x % 7 == 0 else False, map(lambda x: x * 111, iter(x2)))
+print(yyy)
+
+print(next(yyy))
+print(next(yyy))
+print(next(yyy))
+
+print(next(xxx))
+print(next(xxx))
+print(next(xxx))
+
+#for i in yyy:
+#    print(i)

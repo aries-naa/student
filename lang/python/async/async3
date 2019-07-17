@@ -1,0 +1,18 @@
+#!/bin/env python3
+
+import asyncio
+
+async def factorial(name, number):
+    print(f"start: {name}")
+    await asyncio.sleep(number)
+    print(f"finish: {name}")
+
+async def main():
+    # Schedule three calls *concurrently*:
+    await asyncio.gather(
+        factorial("A", 7),
+        factorial("B", 2),
+        factorial("C", 1),
+    )
+
+asyncio.run(main(), debug=True)
