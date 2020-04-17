@@ -1,0 +1,6 @@
+#!/bin/bash
+
+curl --header "Content-Type: application/json" \
+  --request POST \
+  --data '{"article":{"title":"Новая статья 3","description":"Описание 3","body":"Всякая хрень 3","author_id":1}}' \
+  http://localhost:8000/api/articles/
